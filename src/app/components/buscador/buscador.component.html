@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="listo">
+    <a class="navbar-brand" href="#">NEXTIA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">MDA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">MTR</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">AMBOS</a>
+        </li>
+      </ul>
+      <form class="form-inline my-5 my-lg-0 w-50">
+        <input class="form-control mr-sm-2 w-100" type="search" placeholder="BUSCAR" aria-label="Search" (keyup)="buscando(filtro.value)" #filtro>
+      </form>
+    </div>
+  </nav>
+  <div>
+<div class="card mt-2 w-100  animated fadeIn slow" *ngIf="listo && existe">
+    <div class="list-group list-group-flush container  px-0">
+        <div *ngFor="let nodo of cards; " class="list-group-item" style="display: flex; flex-wrap: nowrap; width: 100%;">
+            <div class="" style="width: 75%;">{{nodo.title}} <small> {{ nodo.code}}</small>
+                <br>
+            <small>{{nodo.d_node.title }} - {{nodo.d_node.region.title }} </small>
+            </div> <a class="btn btn-outline-primary" [routerLink]="['/elemento',nodo.id]" [queryParams]="{nombre: nodo.title, nodoId: nodo.dNodeId}" queryParamsHandling="merge" style="width: 20%;">Ver más <i class="fa fa-arrow-right"></i></a></div>
+    </div>
+</div>
+<div class="text-center w-100 mt-5 animated fadeIn slow" *ngIf= "!listo">
+    <i class="fa fa-spinner fa-5x fa-spin "></i>
+</div>
+
+</div>
+<router-outlet></router-outlet>

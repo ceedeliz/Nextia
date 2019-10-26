@@ -1,0 +1,33 @@
+<div class="text-center w-100 mt-5 animated fadeIn slow" *ngIf= "!listo">
+    <i class="fa fa-spinner fa-5x fa-spin "></i>
+</div>    
+<div *ngIf="listo">
+<button  [routerLink] = "['/']" class="btn btn-primary btn-block mt-5"><i class="fa fa-arrow-left"> Regresar </i></button>
+<div class="row"><h2 class="mt-5">Modulo: {{ modulo }}</h2>
+<ul class="nav nav-tabs col-12" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">MDA</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">RMA</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">BOTH</a>
+  </li>
+</ul>
+<div class="tab-content col-12" id="myTabContent">
+  <div class="tab-pane fade show active pd-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="alert alert-success mt-3 text-center" role="alert">Valor max: {{maxValue}}</div>
+      <div class="alert alert-warning text-center" role="alert">Valor min: {{minValue}}</div>
+      <div class="alert alert-info text-center" role="alert">Valor prom: {{promValue}}</div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  </div>
+</div>
+</div>
+<div  style="width: 100%;">
+    <google-chart [data]="lineChart"></google-chart>
+  </div>
+</div>
